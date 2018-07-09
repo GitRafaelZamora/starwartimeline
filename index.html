@@ -7,22 +7,39 @@
 </head>
 <body>
      <div class="container" id="app">
-        <h1>Star Wars Chronological Order</h1>
-         <hr>
-         <br>
-         <br>
-         <div v-for="movie in movies | filterBy 'George Lucas'">
-            <img v-bind:src="movie.field_poster[0].url" alt="{{ movie.field_poster[0].alt }}">
-            <h2>{{ movie.title[0].value }}</h2>
-            <p>
-                <strong>Director: {{ movie.field_director[0].value }}</strong>
-            </p>
-            <strong>Actors: </strong> <br>
-            <span v-for="actor in movie.field_actors">
-                {{ actor.value }}<br>
-            </span>
-         </div>
-     </div>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="page-header">
+                    <h1>Star Wars Chronological Order</h1>
+                </div>
+
+                <div style="display:inline-block;width:100%;overflow-y:auto;">
+                    <ul class="timeline timeline-horizontal">
+                        <li v-for="movie in movies" class="timeline-item">
+                            <div class="timeline-badge primary"><i class="glyphicon glyphicon-check"></i></div>
+                            <div class="timeline-panel">
+                                <div class="timeline-heading">
+                                    <h4 class="timeline-heading">{{ movie.title }}</h4>
+                                </div>
+                                <img style="box-shadow: 0 8px 6px -6px black;" v-bind:src="movie.url" alt="{{ movie.title }}">
+                            </div> <!-- END timeline-panel -->
+                        </li>
+                      <!--   <p>
+                            <strong>Director: {{ movie.field_director[0].value }}</strong>
+                        </p> 
+                        <strong>Actors: </strong> <br>
+                        <span v-for="actor in movie.field_actors">
+                            {{ actor.value }}<br>
+                        </span> -->
+                    </ul> <!-- END timeline-horizontal -->
+
+                </div> <!-- END inline-block -->
+            </div> <!-- END col-md-12 -->
+        </div> <!-- END row -->
+     </div> <!-- END container -->
+     
+
+
      <script
   src="https://code.jquery.com/jquery-3.3.1.min.js"
   integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
